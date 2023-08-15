@@ -1,9 +1,10 @@
+import Grid from "./components/Grid/Grid"
 
 function App() {
 
   return (
     <>
-      Hello
+      <Grid numberOfCards={9}/>
     </>
   )
 }
