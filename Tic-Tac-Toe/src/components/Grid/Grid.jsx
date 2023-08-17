@@ -25,12 +25,18 @@ const Grid = ({numberOfCards}) => {
         setBoard([...board]);
         setTurn(!turn);
     }
+    function reset(){
+        setBoard(Array(numberOfCards).fill(''));
+        setTurn(true);
+        setWinner(null);
+    }
     return(
         <>
             {
                 winner && (
                     <>
                         <h1 className="turn-highlight">Winner is : {winner}</h1>   
+                        <button onClick={reset} className="reset-btn">Play Again</button>
                     </>
                 )
             }

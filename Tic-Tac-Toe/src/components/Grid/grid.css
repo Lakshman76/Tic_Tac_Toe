@@ -11,3 +11,14 @@
 .turn-highlight{
     color: white;
 }
+
+.reset-btn{
+    width: 33%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(1, 1, 183);
+    color: white;
+}
