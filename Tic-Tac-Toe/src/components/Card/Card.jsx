@@ -2,7 +2,7 @@ import Icon from "../Icons/Icons";
 import "./card.css";
 import "../../App.css";
 
-const Card = ({ onPlay, player, index }) => {
+const Card = ({ onPlay, player, index, gameEnd }) => {
 
     let icon = <Icon />
     if(player == "X"){
@@ -13,7 +13,7 @@ const Card = ({ onPlay, player, index }) => {
     }
 
   return (
-    <div className="cards" onClick={() => onPlay(index)}>
+    <div className="cards" onClick={() => !gameEnd && player=="" && onPlay(index)}>
       {icon}
     </div>
   );

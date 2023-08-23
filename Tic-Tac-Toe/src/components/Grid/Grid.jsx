@@ -2,6 +2,8 @@ import { useState } from "react";
 import Card from "../Card/Card";
 import './grid.css';
 import CheckWinner from "../helper/CheckWinner";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Grid = ({numberOfCards}) => {
 
@@ -20,7 +22,8 @@ const Grid = ({numberOfCards}) => {
 
         const win = CheckWinner(board, turn ? 'O' : 'X');
         if(win){
-            setWinner(win)
+            setWinner(win);
+            toast.success(`Congrats! ${win} won the game`)
         }
         setBoard([...board]);
         setTurn(!turn);
@@ -37,13 +40,14 @@ const Grid = ({numberOfCards}) => {
                     <>
                         <h1 className="turn-highlight">Winner is : {winner}</h1>   
                         <button onClick={reset} className="reset-btn">Play Again</button>
+                        <ToastContainer position="top-center"/>
                     </>
                 )
             }
             <h1 className="turn-highlight">Current Turn : {(turn) ? 'O' : 'X'}</h1>
             <div className="grid">
             {board.map((value, Idx) => {
-                return <Card onPlay={play} player={value} key={Idx} index={Idx} />
+                return <Card onPlay={play} gameEnd ={winner ? true : false} player={value} key={Idx} index={Idx} />
             })}
         </div>
         </>
