@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback} from "react";
 import Card from "../Card/Card";
 import './grid.css';
 import CheckWinner from "../helper/CheckWinner";
@@ -11,7 +11,7 @@ const Grid = ({numberOfCards}) => {
     const [board, setBoard] = useState(Array(numberOfCards).fill(''));
     const [winner, setWinner] = useState(null);
 
-    function play(index){
+    const play = useCallback( function playCallback(index){
 
         if(turn){
             board[index] = 'O';
@@ -27,7 +27,7 @@ const Grid = ({numberOfCards}) => {
         }
         setBoard([...board]);
         setTurn(!turn);
-    }
+    },[turn])
     function reset(){
         setBoard(Array(numberOfCards).fill(''));
         setTurn(true);
@@ -37,11 +37,11 @@ const Grid = ({numberOfCards}) => {
         <>
             {
                 winner && (
-                    <>
+                    <div>
                         <h1 className="turn-highlight">Winner is : {winner}</h1>   
                         <button onClick={reset} className="reset-btn">Play Again</button>
                         <ToastContainer position="top-center"/>
-                    </>
+                    </div>
                 )
             }
             <h1 className="turn-highlight">Current Turn : {(turn) ? 'O' : 'X'}</h1>
@@ -49,7 +49,7 @@ const Grid = ({numberOfCards}) => {
             {board.map((value, Idx) => {
                 return <Card onPlay={play} gameEnd ={winner ? true : false} player={value} key={Idx} index={Idx} />
             })}
-        </div>
+            </div>
         </>
     )
 }

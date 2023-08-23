@@ -22,3 +22,9 @@
     background-color: rgb(1, 1, 183);
     color: white;
 }
+.reset-btn:hover{
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid blue;
+    color: blue;
+}
