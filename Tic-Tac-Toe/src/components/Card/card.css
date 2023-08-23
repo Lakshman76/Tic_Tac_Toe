@@ -1,12 +1,11 @@
 .cards{
     border: 2px solid white;
-    /* padding: 2rem; */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 120px;
     height: 120px;
     border-radius: 10%;
-    background-color: var(--yellow);
+    background: linear-gradient(135deg , #d161ff, #8052ec);
     flex-basis: 30%;
 }

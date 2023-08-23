@@ -1,6 +1,7 @@
 import Icon from "../Icons/Icons";
 import "./card.css";
 import "../../App.css";
+import {memo} from "react";
 
 const Card = ({ onPlay, player, index, gameEnd }) => {
 
@@ -19,4 +20,4 @@ const Card = ({ onPlay, player, index, gameEnd }) => {
   );
 };
 
-export default Card;
+export default memo(Card);
